@@ -1,0 +1,28 @@
+
+.div_Cards{
+
+    
+
+    position: fixed;
+  /*  border: solid rebeccapurple 2px;*/
+    display: flex;
+  
+  
+}
+
+.card_esquerda{
+
+    
+    height: 81px;
+    width: 54px;
+   
+}
+
+.card_direita{
+
+    height: 81px;
+    width: 54px;
+    margin-left: 5px;
+    
+
+}

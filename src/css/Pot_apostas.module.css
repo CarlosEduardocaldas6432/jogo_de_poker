@@ -1,0 +1,35 @@
+*{
+    padding: 0;
+}
+
+.div_aposta{
+
+position: fixed;
+display: flex;
+background-color: #0b0b0b;
+border-radius: 30px;
+align-items: center;
+height:25px;
+width: 90px;
+border: solid white 1.5px ;
+margin-bottom: 160px;
+
+
+
+}
+
+.img_aposta{
+
+    width: 18px;
+    height: 18px;
+    margin-left: 15px;
+}
+
+.texto_aposta{
+
+margin-left: 4px;
+margin-top: 2px;
+color: white;
+font-size: 20px;
+
+}

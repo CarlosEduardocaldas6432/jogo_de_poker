@@ -1,0 +1,60 @@
+
+.perfil_fundo{
+
+    position: fixed;
+  /*  border: solid rgb(255, 0, 208) 2px;*/
+    height:120px ;
+    width:240px ;
+    margin-top: 450px;
+    margin-left: 115px;
+
+}
+
+.perfil_fundo_img{
+    position: fixed;
+    height:120px ;
+    width:240px ;
+    
+}
+
+.img_perfil{
+    position: fixed;
+    border-radius: 100px;
+    height: 120px;
+    width: 120px;
+    margin-left: 120px;
+    border: solid rgba(113, 255, 46, 1) 2px;
+   
+}
+
+.div_info{
+    position: fixed;
+ /*   border: solid rgb(0, 191, 255) 2px; */
+    margin-top: 33px;
+    margin-left: 19px;
+   
+
+}
+
+.nome_perfil{
+    
+    font-size: 18px;
+    color: black;
+    text-align: center;
+    margin-bottom: 4.5px;
+    margin-top: 5px;
+    color: white;
+    
+
+
+
+}
+
+.saldo_perfil{
+
+    font-size: 27px;
+    color: black;
+    text-align: center;
+    color: white;
+
+}

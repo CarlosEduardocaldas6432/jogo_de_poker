@@ -1,0 +1,101 @@
+
+
+.div_botoes{
+
+    display: flex;
+    position: fixed;
+    margin-top: 445px;
+    margin-left: 810px;
+
+}
+
+.fold{
+
+    outline: none;
+    color: white;
+    padding: 1px;
+    padding-left: 3px;
+    padding-right: 3px;
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(to bottom, #ff6666, #cc0000, #990000);
+    transition: .1s ease-in-out, .4s color;
+    width: 70px;
+    height: 25px;
+    cursor: pointer;
+    font-size: 15px;
+
+}
+
+.fold:hover {
+
+    opacity: 0.9;
+
+
+}
+
+.fold:active{
+
+    transform: translateX(0.1em) translateY(0.1em);
+
+}
+
+.check_call{
+
+    outline: none;
+    color: white;
+    padding: 1px;
+    padding-left: 3px;
+    padding-right: 3px;
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(to bottom, #4FD13A, #388e3c, #1b5e20);
+    transition: .1s ease-in-out, .4s color;
+    width: 70px;
+    height: 25px;
+    cursor: pointer;
+    margin-left: 14px;
+    font-size: 15px;
+
+}
+
+.check_call:hover {
+
+    opacity: 0.9;
+
+
+}
+
+.check_call:active{
+
+    transform: translateX(0.1em) translateY(0.1em);
+}
+
+
+.bet{
+
+    outline: none;
+    color: white;
+    padding: 1px;
+    padding-left: 3px;
+    padding-right: 3px;
+    border:none;
+    border-radius: 15px;
+    background: linear-gradient(to bottom, #E3DD4B, #fbc02d, #f57f17);
+    transition: .1s ease-in-out, .4s color;
+    width: 70px;
+    height: 25px;
+    cursor: pointer;
+    margin-left: 14px;
+    font-size: 15px;
+}
+
+.bet:hover {
+
+    opacity: 0.9;
+
+}
+.bet:active{
+
+    transform: translateX(0.1em) translateY(0.1em);
+}

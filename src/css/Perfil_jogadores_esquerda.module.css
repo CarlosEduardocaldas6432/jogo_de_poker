@@ -1,0 +1,61 @@
+
+.perfil_fundo{
+
+ /*   border: solid rgb(255, 0, 208) 2px;*/
+    height:80px ;
+    width:160px ;
+   
+
+}
+
+.perfil_fundo_img{
+    position: fixed;
+    height:80px ;
+    width:160px ;
+    
+}
+
+.img_perfil{
+    position: fixed;
+    border-radius: 50px;
+    height: 80px;
+    width: 80px;
+    margin-left: 80px;
+    border: solid rgba(113, 255, 46, 1) 2px;
+   
+}
+
+.div_info{
+    position: fixed;
+  /*  border: solid rgb(0, 191, 255) 2px;*/
+    margin-top: 19px;
+    
+   
+
+}
+
+.nome_perfil{
+    
+    color: black;
+    text-align: center;
+    margin-bottom: 3px;
+    margin-top: 5px;
+    margin-left: 10px;
+    font-size: 12px;
+    color: white;
+    
+
+
+
+}
+
+.saldo_perfil{
+
+    color: black;
+    text-align: center;
+    margin-left: 5px;
+    font-size: 18px;
+    color: white;
+
+
+}

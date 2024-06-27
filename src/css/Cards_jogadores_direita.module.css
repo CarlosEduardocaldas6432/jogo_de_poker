@@ -1,0 +1,25 @@
+
+.div_Cards{
+
+    position: fixed;
+   
+    
+  
+}
+
+.card_esquerda{
+
+    height: 22.5px;
+    width: 15px;
+    margin-left: 110px;
+   
+    
+}
+
+.card_direita{
+
+    height: 22.5px;
+    width: 15px;
+    margin-left: 3px;
+
+}
