@@ -9,6 +9,7 @@ export default function Cards_pricipal () {
 
      
       <img className={styles.card_esquerda} src={card} alt="" />
+      
       <img className={styles.card_direita} src={card2} alt="" />
     
     </div>

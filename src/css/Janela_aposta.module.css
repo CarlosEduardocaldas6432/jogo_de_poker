@@ -1,0 +1,70 @@
+
+.div_janela{
+
+    display: block;
+    height:87px ;
+    width:100px ;
+    background-color: rgb(90, 91, 93);
+    position: fixed;
+    align-items: center;
+    border-radius: 18px;
+    align-items: center;
+    margin-left: 977px;
+    margin-top: 310px;
+    
+
+
+}
+
+.aposta{
+
+   border-style:none;
+   height:30px ;
+   width:75px;
+   font-size: 18px;
+   border-radius: 8px;
+   text-align: center;
+   margin-left:10px;
+   margin-top:8px;
+   font-family:'Josefina Sans', sans-serif;
+   background-color: rgb(52, 56, 64);
+   color: white;
+   border: solid gold 2px;
+
+}
+
+.aposta:focus {
+    outline: none; 
+    border: none;
+    border: solid gold 2px;
+}
+
+.confimar_aposta{
+
+    height:30px ;
+    width:79px;
+    border-radius: 8px;
+    border: none;
+    border: solid gold 2px;
+    margin-left:10px;
+    margin-top:6px;
+    font-family:'Josefina Sans', sans-serif;
+    transition: .1s ease-in-out, opacity 0.3s;
+    background-color: rgb(52, 56, 64);
+    color: white;
+
+}
+
+.confimar_aposta:active{
+
+    transform: translateX(0.1em) translateY(0.1em);
+
+}
+
+.confimar_aposta:hover{
+
+    opacity: 0.8;
+
+}
+
+

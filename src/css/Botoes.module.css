@@ -19,11 +19,12 @@
     border: none;
     border-radius: 15px;
     background: linear-gradient(to bottom, #ff6666, #cc0000, #990000);
-    transition: .1s ease-in-out, .4s color;
+    transition: .1s ease-in-out;
     width: 70px;
     height: 25px;
     cursor: pointer;
     font-size: 15px;
+    font-family:'Josefina Sans', sans-serif;
 
 }
 
@@ -56,6 +57,7 @@
     cursor: pointer;
     margin-left: 14px;
     font-size: 15px;
+    font-family:'Josefina Sans', sans-serif;
 
 }
 
@@ -88,6 +90,7 @@
     cursor: pointer;
     margin-left: 14px;
     font-size: 15px;
+    font-family:'Josefina Sans', sans-serif;
 }
 
 .bet:hover {

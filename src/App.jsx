@@ -2,6 +2,7 @@
 /* eslint-disable*/ 
 //atenção: quando for fazer o nome de perfil limita a quatidade de 9 caracter para não sair do perfil 
 
+import Janela_aposta from './components/Janela_aposta.jsx'
 import Pot_apostas from './components/Pot_apostas.jsx'
 import Croupier from './components/Croupier.jsx'
 import Botoes from './components/Botoes.jsx'
@@ -44,6 +45,7 @@ function App() {
       <Cards_puxados />
       <Cards_principal />
       <Perfil_principal />
+      <Janela_aposta />
 
     </div>
   
