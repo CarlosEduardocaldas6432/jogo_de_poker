@@ -1,7 +1,7 @@
 
-/* eslint-disable*/ 
-//atenção: quando for fazer o nome de perfil limita a quatidade de 9 caracter para não sair do perfil 
 
+//atenção: quando for fazer o nome de perfil limita a quatidade de 9 caracter para não sair do perfil 
+import { useState } from 'react';
 import Janela_aposta from './components/Janela_aposta.jsx'
 import Pot_apostas from './components/Pot_apostas.jsx'
 import Croupier from './components/Croupier.jsx'
@@ -16,6 +16,25 @@ import fundo from "./imgs/fundo.png";
 import mesaPoker from "./imgs/mesaPoker.png";
 
 function App() {
+
+  /*   setTimeout(() => {   },1000);*/ 
+
+
+  const [cardsAparecendo, setCardsAparecendo] = useState(false);
+
+  const gerarCards = () => {
+    setTimeout(() => { 
+      setCardsAparecendo(true);
+      console.log("Aqui você pode colocar uma mensagem útil ou informativa");
+    }, 5000);
+  }
+
+
+  const desistir_da_mao = () => {
+
+    setCardsAparecendo(false);
+  }
+
 
 
   return (
@@ -40,12 +59,15 @@ function App() {
         
       </div>
       <Pot_apostas />
-      <Botoes />
+      <Botoes fold={desistir_da_mao}  call={gerarCards} />
       <Croupier />
       <Cards_puxados />
-      <Cards_principal />
+      {cardsAparecendo && <Cards_principal />}
+      
       <Perfil_principal />
       <Janela_aposta />
+
+      
 
     </div>
   
