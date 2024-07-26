@@ -83,6 +83,7 @@ const pontuacao = (carta_mao_1,carta_mao_2,carta_puxada_1,carta_puxada_2,carta_p
         if (flush) return 'Flush';
         if (straight) return 'Straight';
         if (trinca) return 'Trinca';
+        if (par === 3) return 'Três Pares';
         if (par === 2) return 'Dois Pares';
         if (par === 1) return 'Par';
         return 'Carta Alta';

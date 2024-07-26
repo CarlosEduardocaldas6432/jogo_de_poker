@@ -20,6 +20,8 @@ import Baralho from './Baralho.js'
 import pontuacao from './modules/pontuacao.js'
 
 
+let cartas
+
 let carta_mao_1 ={};
 let carta_mao_2 ={};
 let carta_puxada_1 ={};
@@ -27,6 +29,7 @@ let carta_puxada_2 ={};
 let carta_puxada_3 ={};
 let carta_puxada_4 ={};
 let carta_puxada_5 ={};
+
 
 function gerarCardAleatorio() {
   let num_aleatorio = Math.floor(Math.random() * 52);
@@ -39,23 +42,7 @@ function gerar_cards_para_jogo(){
 
   carta_mao_1 =gerarCardAleatorio();
   carta_mao_2 =gerarCardAleatorio();
-  carta_puxada_1 =gerarCardAleatorio();
-  carta_puxada_2 =gerarCardAleatorio();
-  carta_puxada_3 =gerarCardAleatorio();
-  carta_puxada_4 =gerarCardAleatorio();
-  carta_puxada_5 =gerarCardAleatorio();
- 
 }
-
-
-
-  
-
-
-
-
-
-
 
 
   // depois fazer esse usuario no login 
@@ -78,10 +65,27 @@ websocket.onopen = () => {
 }
 
 //onmessage serve para escuta a messagem que o servidor vai manda
-websocket.onmessage = (msg) =>{
+websocket.onmessage = ({data}) =>{
 
   //data é o valor da messagem
-  console.log(msg.data);
+  
+
+    console.log(data);
+    try {
+       
+      
+      carta_puxada_1 =JSON.parse(data)[0];
+      carta_puxada_2 =JSON.parse(data)[1];
+      carta_puxada_3 =JSON.parse(data)[2];
+      carta_puxada_4 =JSON.parse(data)[3];
+      carta_puxada_5 =JSON.parse(data)[4];
+      
+
+  } catch (e) {
+      console.log("esse erro so acontece por que nao sei fazer condiciona para json")
+  }
+
+
 }
 
 
@@ -106,6 +110,7 @@ function App() {
   const jogo_de_poker_comecou = () => {
 
     gerar_cards_para_jogo();
+    console.log(carta_puxada_1,carta_puxada_2,carta_puxada_3,carta_puxada_4,carta_puxada_5)
     setiniciar_jogo(true);
     setTimeout(() => { 
       setcards_principal_aparecendo(true);
