@@ -20,8 +20,6 @@ import Baralho from './Baralho.js'
 import pontuacao from './modules/pontuacao.js'
 
 
-let cartas
-
 let carta_mao_1 ={};
 let carta_mao_2 ={};
 let carta_puxada_1 ={};
@@ -72,7 +70,6 @@ websocket.onmessage = ({data}) =>{
 
     console.log(data);
     try {
-       
       
       carta_puxada_1 =JSON.parse(data)[0];
       carta_puxada_2 =JSON.parse(data)[1];
