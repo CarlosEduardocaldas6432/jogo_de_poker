@@ -7,7 +7,7 @@ import Aposta_principal from './Aposta_principal';
 
 
 
-export default function perfil_principal (){
+export default function perfil_principal ({combinacao}){
 
     return(
         <div className={styles.perfil_fundo}>
@@ -17,7 +17,7 @@ export default function perfil_principal (){
            
          
             <div className={styles.div_info}>
-                <p className={styles.nome_perfil}>Full House</p>
+                <p className={styles.nome_perfil}>{combinacao}</p>
                 <p className={styles.saldo_perfil}>10,000</p>
                 <Aposta_principal />
                

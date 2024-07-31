@@ -19,6 +19,7 @@ import mesaPoker from "./imgs/mesaPoker.png";
 import Baralho from './Baralho.js'
 import pontuacao from './modules/pontuacao.js'
 
+let combinacao = "High Card"
 
 let carta_mao_1 ={};
 let carta_mao_2 ={};
@@ -120,8 +121,9 @@ function App() {
             setTimeout(() => { 
               setcards_do_jogo_quatro(true);
               setTimeout(() => { 
+                combinacao = pontuacao(carta_mao_1,carta_mao_2,carta_puxada_1,carta_puxada_2,carta_puxada_3,carta_puxada_4,carta_puxada_5)
                 setcards_do_jogo_cinco(true);
-              console.log(pontuacao(carta_mao_1,carta_mao_2,carta_puxada_1,carta_puxada_2,carta_puxada_3,carta_puxada_4,carta_puxada_5))  
+              console.log(combinacao)  
               }, 2000);
             }, 2000);
           }, 2000);
@@ -183,7 +185,7 @@ function App() {
 
       {cards_principal_aparecendo && <Cards_principal desistiu={desistiu_da_mao} carta_mao_1={carta_mao_1} carta_mao_2={carta_mao_2} />}
       
-      <Perfil_principal />
+      <Perfil_principal combinacao={combinacao} />
       <Janela_aposta />
       < Tela_inicial inicio={iniciar_jogo}  funcao_pra_comecar_jogo={jogo_de_poker_comecou} />
 
