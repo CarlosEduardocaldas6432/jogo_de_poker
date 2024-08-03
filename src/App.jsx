@@ -44,44 +44,43 @@ function gerar_cards_para_jogo(){
 }
 
 
+
+
   // depois fazer esse usuario no login 
   const usuario = {id:"",nome:""}
 
   //gerar um id aleadorio
-  usuario.id = crypto.randomUUID()
+  
 
 //conversando com o backend
 
 
 let websocket 
-  
+let client  
 websocket = new WebSocket("ws://localhost:8080")
 
 
 // o onopen serve para executar uma função depois de conecta
 websocket.onopen = () => {
   websocket.send("estou enviando essa messagem do frontent, passando pelo backend e voltando")
+  
 }
 
 //onmessage serve para escuta a messagem que o servidor vai manda
-websocket.onmessage = ({data}) =>{
+websocket.onmessage = (msg) =>{
 
   //data é o valor da messagem
   
+ 
 
-    console.log(data);
-    try {
-      
-      carta_puxada_1 =JSON.parse(data)[0];
-      carta_puxada_2 =JSON.parse(data)[1];
-      carta_puxada_3 =JSON.parse(data)[2];
-      carta_puxada_4 =JSON.parse(data)[3];
-      carta_puxada_5 =JSON.parse(data)[4];
-      
-
-  } catch (e) {
-      console.log("esse erro so acontece por que nao sei fazer condiciona para json")
-  }
+  client = JSON.parse(msg.data)
+  console.log(client)
+  carta_puxada_1 =(client.carta_puxada_1);
+  carta_puxada_2 =(client.carta_puxada_2);
+  carta_puxada_3 =(client.carta_puxada_3);
+  carta_puxada_4 =(client.carta_puxada_4);
+  carta_puxada_5 =(client.carta_puxada_5);
+    
 
 
 }
@@ -106,9 +105,9 @@ function App() {
 
 
   const jogo_de_poker_comecou = () => {
+    console.log(carta_puxada_1,carta_puxada_2,carta_puxada_3,carta_puxada_4,carta_puxada_5)
 
     gerar_cards_para_jogo();
-    console.log(carta_puxada_1,carta_puxada_2,carta_puxada_3,carta_puxada_4,carta_puxada_5)
     setiniciar_jogo(true);
     setTimeout(() => { 
       setcards_principal_aparecendo(true);
@@ -123,7 +122,7 @@ function App() {
               setTimeout(() => { 
                 combinacao = pontuacao(carta_mao_1,carta_mao_2,carta_puxada_1,carta_puxada_2,carta_puxada_3,carta_puxada_4,carta_puxada_5)
                 setcards_do_jogo_cinco(true);
-              console.log(combinacao)  
+               
               }, 2000);
             }, 2000);
           }, 2000);
