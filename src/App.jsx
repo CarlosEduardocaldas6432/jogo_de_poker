@@ -20,6 +20,7 @@ import Baralho from './Baralho.js'
 import pontuacao from './modules/pontuacao.js'
 
 let combinacao = "High Card"
+let pot_da_mesa = 0
 
 let carta_mao_1 ={};
 let carta_mao_2 ={};
@@ -28,6 +29,10 @@ let carta_puxada_2 ={};
 let carta_puxada_3 ={};
 let carta_puxada_4 ={};
 let carta_puxada_5 ={};
+
+
+
+
 
 
 function gerarCardAleatorio() {
@@ -43,13 +48,6 @@ function gerar_cards_para_jogo(){
   carta_mao_2 =gerarCardAleatorio();
 }
 
-
-
-
-  // depois fazer esse usuario no login 
- 
-
-  //gerar um id aleadorio
   
 
 //conversando com o backend
@@ -70,7 +68,7 @@ websocket.onopen = () => {
 //onmessage serve para escuta a messagem que o servidor vai manda
 websocket.onmessage = (msg) =>{
 
-  console.log(msg.data)
+  
   //data é o valor da messagem
   let data = JSON.parse(msg.data)
  
@@ -79,16 +77,17 @@ websocket.onmessage = (msg) =>{
 
   if (data.carta_puxada_1){
     usuario = data
-    console.log(usuario)
-    carta_puxada_1 =(usuario.carta_puxada_1);
-    carta_puxada_2 =(usuario.carta_puxada_2);
-    carta_puxada_3 =(usuario.carta_puxada_3);
-    carta_puxada_4 =(usuario.carta_puxada_4);
-    carta_puxada_5 =(usuario.carta_puxada_5);
+    
+    carta_puxada_1 =usuario.carta_puxada_1;
+    carta_puxada_2 =usuario.carta_puxada_2;
+    carta_puxada_3 =usuario.carta_puxada_3;
+    carta_puxada_4 =usuario.carta_puxada_4;
+    carta_puxada_5 =usuario.carta_puxada_5;
+    pot_da_mesa = usuario.pot_da_mesa 
   }
   if (!data.carta_puxada_1) {
-    jogadores = data
-    console.log(jogadores[0])
+    jogadores = data.filter(objeto => objeto.usuario_id !== usuario.usuario_id)
+    console.log(jogadores)
   }
     
   
@@ -107,6 +106,10 @@ function App() {
   const [iniciar_jogo, setiniciar_jogo] = useState(false);
   const [desistiu_da_mao, setdesistiu_da_mao] = useState(false);
 
+  const [jogador1, setjogador1] = useState(false);
+  const [jogador2, setjogador2] = useState(false);
+  const [jogador3, setjogador3] = useState(false);
+  const [jogador4, setjogador4] = useState(false);
   const [cards_do_jogo_um, setcards_do_jogo_um] = useState(false);
   const [cards_do_jogo_dois, setcards_do_jogo_dois] = useState(false);
   const [cards_do_jogo_tres, setcards_do_jogo_tres] = useState(false);
@@ -115,7 +118,7 @@ function App() {
 
 
   const jogo_de_poker_comecou = () => {
-    console.log(carta_puxada_1,carta_puxada_2,carta_puxada_3,carta_puxada_4,carta_puxada_5)
+    
 
     gerar_cards_para_jogo();
     setiniciar_jogo(true);
@@ -155,10 +158,7 @@ function App() {
 
 
 
-  /*    <Perfil_jogadores_direita />
-        <Perfil_jogadores_esquerda />
-        <Perfil_jogadores_direita />    
-        <Perfil_jogadores_esquerda />*/
+
 
   return (
   <>
@@ -175,11 +175,14 @@ function App() {
 
       <div className='game_interaction'>
        
-       
+      {jogador1 && <Perfil_jogadores_direita />}  
+      {jogador2 && <Perfil_jogadores_esquerda />}  
+      {jogador3 && <Perfil_jogadores_direita />}      
+      {jogador4 && <Perfil_jogadores_esquerda />}  
        
         
       </div>
-      <Pot_apostas />
+      <Pot_apostas pot={pot_da_mesa} />
       <Botoes fold={desistir_da_mao}   />
       <Croupier />
       <Cards_puxados 
