@@ -47,7 +47,7 @@ function gerar_cards_para_jogo(){
 
 
   // depois fazer esse usuario no login 
-  const usuario = {id:"",nome:""}
+ 
 
   //gerar um id aleadorio
   
@@ -56,7 +56,8 @@ function gerar_cards_para_jogo(){
 
 
 let websocket 
-let client  
+let usuario  
+let jogadores 
 websocket = new WebSocket("ws://localhost:8080")
 
 
@@ -69,19 +70,28 @@ websocket.onopen = () => {
 //onmessage serve para escuta a messagem que o servidor vai manda
 websocket.onmessage = (msg) =>{
 
+  console.log(msg.data)
   //data é o valor da messagem
-  
+  let data = JSON.parse(msg.data)
  
+  
 
-  client = JSON.parse(msg.data)
-  console.log(client)
-  carta_puxada_1 =(client.carta_puxada_1);
-  carta_puxada_2 =(client.carta_puxada_2);
-  carta_puxada_3 =(client.carta_puxada_3);
-  carta_puxada_4 =(client.carta_puxada_4);
-  carta_puxada_5 =(client.carta_puxada_5);
+
+  if (data.carta_puxada_1){
+    usuario = data
+    console.log(usuario)
+    carta_puxada_1 =(usuario.carta_puxada_1);
+    carta_puxada_2 =(usuario.carta_puxada_2);
+    carta_puxada_3 =(usuario.carta_puxada_3);
+    carta_puxada_4 =(usuario.carta_puxada_4);
+    carta_puxada_5 =(usuario.carta_puxada_5);
+  }
+  if (!data.carta_puxada_1) {
+    jogadores = data
+    console.log(jogadores[0])
+  }
     
-
+  
 
 }
 
