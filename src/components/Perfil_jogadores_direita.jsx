@@ -6,7 +6,7 @@ import fundo_do_perfil from "../imgs/fundo_do_perfil_direita.png";
 import foto_perfil from "../imgs/astronalta.png";
 
 
-export default function perfil_jogadores_direita(){
+export default function perfil_jogadores_direita(jogador){
 
     return(
         <div className={styles.perfil_fundo}>
@@ -17,8 +17,8 @@ export default function perfil_jogadores_direita(){
             
             <div className={styles.div_info}>
             
-                <p className={styles.nome_perfil}>Mata Porco</p>
-                <p className={styles.saldo_perfil}>6,000</p>
+                <p className={styles.nome_perfil}>{jogador.usuario_nome}</p>
+                <p className={styles.saldo_perfil}>{jogador.usuario_saldo}</p>
                 <Aposta_jogadores />
                 
             </div>

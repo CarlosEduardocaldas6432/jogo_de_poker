@@ -1,5 +1,5 @@
 
-
+// usar o chat gpt pra fazer a resposividade
 //atenção: quando for fazer o nome de perfil limita a quatidade de 9 caracter para não sair do perfil 
 import { useState } from 'react';
 
@@ -32,7 +32,15 @@ let carta_puxada_5 ={};
 
 
 
+const esta_jogando = (jogador) => {
 
+if (jogador && jogador.esta_jogando === true) {
+ return true
+}
+else {
+ return false
+}
+}
 
 
 function gerarCardAleatorio() {
@@ -55,44 +63,17 @@ function gerar_cards_para_jogo(){
 
 let websocket 
 let usuario  
-let jogadores 
+let jogadores = [] 
 websocket = new WebSocket("ws://localhost:8080")
 
 
 // o onopen serve para executar uma função depois de conecta
-websocket.onopen = () => {
+/*websocket.onopen = () => {
   websocket.send("estou enviando essa messagem do frontent, passando pelo backend e voltando")
   
-}
-
-//onmessage serve para escuta a messagem que o servidor vai manda
-websocket.onmessage = (msg) =>{
-
-  
-  //data é o valor da messagem
-  let data = JSON.parse(msg.data)
- 
-  
+}*/
 
 
-  if (data.carta_puxada_1){
-    usuario = data
-    
-    carta_puxada_1 =usuario.carta_puxada_1;
-    carta_puxada_2 =usuario.carta_puxada_2;
-    carta_puxada_3 =usuario.carta_puxada_3;
-    carta_puxada_4 =usuario.carta_puxada_4;
-    carta_puxada_5 =usuario.carta_puxada_5;
-    pot_da_mesa = usuario.pot_da_mesa 
-  }
-  if (!data.carta_puxada_1) {
-    jogadores = data.filter(objeto => objeto.usuario_id !== usuario.usuario_id)
-    console.log(jogadores)
-  }
-    
-  
-
-}
 
 
 
@@ -115,13 +96,66 @@ function App() {
   const [cards_do_jogo_tres, setcards_do_jogo_tres] = useState(false);
   const [cards_do_jogo_quatro, setcards_do_jogo_quatro] = useState(false);
   const [cards_do_jogo_cinco, setcards_do_jogo_cinco] = useState(false);
+  const [nome, setNome] = useState('');
+  const [jogadores_online, setjogadores_online] = useState('');
+
+
+
+  //onmessage serve para escuta a messagem que o servidor vai manda
+websocket.onmessage = (msg) =>{
+
+  
+  //data é o valor da messagem
+  let data = JSON.parse(msg.data)
+ 
+  
+
+
+  if (data.carta_puxada_1){
+    usuario = data
+    
+    carta_puxada_1 =usuario.carta_puxada_1;
+    carta_puxada_2 =usuario.carta_puxada_2;
+    carta_puxada_3 =usuario.carta_puxada_3;
+    carta_puxada_4 =usuario.carta_puxada_4;
+    carta_puxada_5 =usuario.carta_puxada_5;
+    pot_da_mesa = usuario.pot_da_mesa 
+
+    setTimeout(() => {   
+      websocket.send(JSON.stringify(usuario))
+
+    },1000);
+    
+  }
+  if (!data.carta_puxada_1) {
+    jogadores = data.filter(objeto => objeto.usuario_id !== usuario.usuario_id);
+    console.log(jogadores);
+    setjogadores_online(jogadores.length)
+    
+
+    
+  }
+    
+  
+
+}
+
+
+  const handleNomeChange = (novoNome) => {
+    setNome(novoNome);
+  };
+
 
 
   const jogo_de_poker_comecou = () => {
     
-
+    usuario.usuario_nome = nome;
     gerar_cards_para_jogo();
-    setiniciar_jogo(true);
+    setiniciar_jogo(true)
+    setjogador1(esta_jogando(jogadores[0]))
+    setjogador2(esta_jogando(jogadores[1]))
+    setjogador3(esta_jogando(jogadores[2]))
+    setjogador4(esta_jogando(jogadores[3]))
     setTimeout(() => { 
       setcards_principal_aparecendo(true);
       setTimeout(() => { 
@@ -159,7 +193,6 @@ function App() {
 
 
 
-
   return (
   <>
 
@@ -171,14 +204,15 @@ function App() {
         <img className='mesa_de_poker' src={mesaPoker} alt="" />
 
       </div>
-      
+ 
 
       <div className='game_interaction'>
-       
-      {jogador1 && <Perfil_jogadores_direita />}  
+        {/*o setjogador2 aqui serve para não da error de posionamento do perfil um quando ter apenas um jogador */}
+      {jogador1 && <Perfil_jogadores_direita  />}  
       {jogador2 && <Perfil_jogadores_esquerda />}  
-      {jogador3 && <Perfil_jogadores_direita />}      
-      {jogador4 && <Perfil_jogadores_esquerda />}  
+      {jogador3 && <Perfil_jogadores_direita  />}      
+      {jogador4 && <Perfil_jogadores_esquerda />} 
+
        
         
       </div>
@@ -196,10 +230,11 @@ function App() {
       />
 
       {cards_principal_aparecendo && <Cards_principal desistiu={desistiu_da_mao} carta_mao_1={carta_mao_1} carta_mao_2={carta_mao_2} />}
-      
+ 
       <Perfil_principal combinacao={combinacao} />
       <Janela_aposta />
-      < Tela_inicial inicio={iniciar_jogo}  funcao_pra_comecar_jogo={jogo_de_poker_comecou} />
+      < Tela_inicial inicio={iniciar_jogo}  funcao_pra_comecar_jogo={jogo_de_poker_comecou} onNomeChange={handleNomeChange} 
+      jogadores_online={jogadores_online} />
 
       
 

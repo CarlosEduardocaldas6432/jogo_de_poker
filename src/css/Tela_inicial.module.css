@@ -10,6 +10,48 @@
 
 }
 
+.form_container {
+ 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.input_field {
+  width: 20%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  font-family:'Josefina Sans', sans-serif;
+  border: none;
+}
+
+.input_field:focus {
+  outline: none; 
+}
+
+.submit_button {
+  width: 20%;
+  padding: 10px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family:'Josefina Sans', sans-serif;
+}
+
+.submit_button:hover {
+  background-color: #0056b3;
+}
+
+
+
 .jogo_comecou{
 
     position: fixed;
@@ -27,30 +69,10 @@
 .text_inicial{
 
     margin-top: 334px;
-    color: #eed623;
+    color: #23ee2a;
     font-family:'Josefina Sans', sans-serif;
 }
 
-.button_inicial{
-
-    margin-top: 25px;
-    width:120px;
-    height:40px;
-    background: linear-gradient(to bottom, #56e340, #41a446, #217026);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 25px;
-    font-family:'Josefina Sans', sans-serif;
-    transition: .1s ease-in-out;
-    
-}
-
-
-.button_inicial:active{
-
-    transform: translateX(0.1em) translateY(0.1em);
-}
 
 
 /* ----------------------------------------------
